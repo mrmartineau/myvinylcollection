@@ -16,8 +16,8 @@ app.use(express.static(__dirname + '/public'));
 
 
 var dis = new Discogs({
-	consumerKey: 'OWcPrGbjzGNArMQbWBTa',
-	consumerSecret: 'eGlJvqrtzBYowAtqNJBxEjuXNjigWtSe'
+	consumerKey: process.env.discogs_consumerKey, //'OWcPrGbjzGNArMQbWBTa',
+	consumerSecret: process.env.discogs_consumerSecret //'eGlJvqrtzBYowAtqNJBxEjuXNjigWtSe'
 }).user().collection();
 
 
@@ -52,8 +52,10 @@ app.get('/', function(req, res) {
 	res.render('index', { title: 'Zander\'s Vinyl Collection', releases: releases});
 });
 
-var server = app.listen(3000, function () {
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log('Example app listening at http://%s:%s', host, port);
-});
+app.listen(process.env.PORT || 3000);
+console.log("process.env", process.env.discogs_consumerKey);
+// var server = app.listen(process.env.PORT || 3000, function () {
+// 	var host = server.address().address;
+// 	var port = server.address().port;
+// 	console.log('Example app listening at http://%s:%s', host, port);
+// });
