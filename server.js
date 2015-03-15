@@ -2,6 +2,7 @@
  * TODO:
  * Needs a promise so the releases render at the right time
  * Style the page
+ * Deploy to Heroku ✔︎
  */
 
 var Discogs = require('disconnect').Client;
@@ -16,8 +17,8 @@ app.use(express.static(__dirname + '/public'));
 
 
 var dis = new Discogs({
-	consumerKey: process.env.discogs_consumerKey, //'OWcPrGbjzGNArMQbWBTa',
-	consumerSecret: process.env.discogs_consumerSecret //'eGlJvqrtzBYowAtqNJBxEjuXNjigWtSe'
+	consumerKey: process.env.discogs_consumerKey,
+	consumerSecret: process.env.discogs_consumerSecret
 }).user().collection();
 
 
@@ -25,6 +26,7 @@ var releases = [];
 dis.releases('MrMartineau', 0, {page: 1, per_page: 200}, function(err, data){
 	//console.log(data.releases[0]);
 
+	// Create a dictionary of releases in a more palatable format
 	for (var i = 0; i < data.releases.length; i++) {
 		releases[i] = {
 			artist : data.releases[i].basic_information.artists[0].name,
@@ -34,6 +36,8 @@ dis.releases('MrMartineau', 0, {page: 1, per_page: 200}, function(err, data){
 			year: data.releases[i].basic_information.year
 		};
 	}
+
+	// Sort the releases alphabetically
 	releases.sort(function(a,b){
 		if (a.artist > b.artist) {
 			return 1;
@@ -53,9 +57,4 @@ app.get('/', function(req, res) {
 });
 
 app.listen(process.env.PORT || 3000);
-console.log("process.env", process.env.discogs_consumerKey);
-// var server = app.listen(process.env.PORT || 3000, function () {
-// 	var host = server.address().address;
-// 	var port = server.address().port;
-// 	console.log('Example app listening at http://%s:%s', host, port);
-// });
+console.error('APP STARTED');
