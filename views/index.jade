@@ -1,0 +1,14 @@
+html
+  head
+    title!= title
+    link(rel="stylesheet", href="/style.css")
+  body
+    ul.collection
+      each val in releases
+        li
+          img(src=val.img)
+          span.artist= val.artist
+          span.releaseName= val.releaseName
+          a.uri= val.uri
+          span.year= val.year
+

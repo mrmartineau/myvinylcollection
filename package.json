@@ -1,0 +1,17 @@
+{
+  "name": "discogs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "disconnect": "^0.6.2",
+    "express": "^4.12.2",
+    "jade": "^1.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
