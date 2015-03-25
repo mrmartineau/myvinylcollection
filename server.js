@@ -1,8 +1,9 @@
 /**
  * TODO:
  * Needs a promise so the releases render at the right time
- * Style the page
+ * Style the page ✔︎
  * Deploy to Heroku ✔︎
+ * Link to the release
  */
 
 var Discogs = require('disconnect').Client;

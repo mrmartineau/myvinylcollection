@@ -2,13 +2,20 @@ html
   head
     title!= title
     link(rel="stylesheet", href="/style.css")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Karla:400,700")
   body
+    h1
+      | My Vinyl Collection
+
+    a(href="http://www.discogs.com/user/MrMartineau/collection")
+      | View on Discogs
+
     ul.collection
       each val in releases
-        li
-          img(src=val.img)
-          span.artist= val.artist
-          span.releaseName= val.releaseName
-          a.uri= val.uri
-          span.year= val.year
+        li(style="background-image: url(\"" + val.img + "\");").collection-item
+          div.collection-info
+            div.releaseName= val.releaseName
+            div.artist= val.artist
+            a.uri= val.uri
+            div.year= val.year
 
