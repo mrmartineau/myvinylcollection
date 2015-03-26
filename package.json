@@ -5,6 +5,7 @@
   "main": "script.js",
   "dependencies": {
     "disconnect": "^0.6.2",
+    "es6-promise": "^2.0.1",
     "express": "^4.12.2",
     "jade": "^1.9.2"
   },
